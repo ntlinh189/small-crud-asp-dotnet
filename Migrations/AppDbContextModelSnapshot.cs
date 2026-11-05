@@ -22,6 +22,33 @@ namespace small_crud_asp_dotnet.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("small_crud_asp_dotnet.Models.DonHang", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MaKhachHang")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("MaKhachHang");
+
+                    b.Property<DateTime>("NgayTao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("TongTien")
+                        .HasColumnType("numeric(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaKhachHang", "NgayTao")
+                        .HasDatabaseName("idx_donhang_makhachhang_ngaytao");
+
+                    b.ToTable("DonHangs", (string)null);
+                });
+
             modelBuilder.Entity("small_crud_asp_dotnet.Models.SanPham", b =>
                 {
                     b.Property<int>("Id")
@@ -30,22 +57,25 @@ namespace small_crud_asp_dotnet.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
                     b.Property<decimal>("Gia")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric")
+                        .HasColumnName("Gia");
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("integer");
 
                     b.Property<string>("Ten")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("text")
+                        .HasColumnName("Ten");
 
                     b.HasKey("Id");
 
-                    b.ToTable("SanPhams");
+                    b.ToTable("SanPhams", (string)null);
                 });
 #pragma warning restore 612, 618
         }

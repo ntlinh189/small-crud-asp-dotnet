@@ -16,4 +16,5 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<SanPham> SanPhams { set; get; }
+    public DbSet<DonHang> DonHangs { set; get; }
 }
