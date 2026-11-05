@@ -1,0 +1,37 @@
+@small_crud_asp_dotnet_HostAddress = http://localhost:5046
+
+### get all
+GET {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/all
+Accept: application/json
+
+### get by id
+Get {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/2
+Accept: application/json
+
+### create
+POST {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/create
+Content-Type: application/json
+
+{
+    "ten": "Keyboard",
+    "gia": 2500000,
+    "soLuong": 30
+}
+
+### update
+PUT {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/update/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "ten": "Mechanical Keyboard Pro",
+    "gia": 2000000,
+    "soLuong": 15
+}
+
+### delete
+DELETE {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/1
+
+### Get products by minimum price
+GET {{small_crud_asp_dotnet_HostAddress}}/api/sanpham/price?minPrice=1000000
+Accept: application/json
